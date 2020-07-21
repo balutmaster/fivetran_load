@@ -1,0 +1,1033 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/11/2020 9:25:37 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RICH-MAIN"
+  DTS:CreatorName="RICH-MAIN\rich"
+  DTS:DTSID="{7B4A628F-000B-4E49-ACE5-0790B8C333E6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load_5tran_Data"
+  DTS:PackageType="5"
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{49046AEE-7D81-4F37-B62C-F35058313CCB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CLIMATOLOGY_DAY]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{79CA3B9D-E8CA-4397-BA50-9D06B6304180}"
+      DTS:ObjectName="CLIMATOLOGY_DAY">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Data\unload\CLIMATOLOGY_DAY" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FORECAST_DAY]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{94DC8298-536B-4281-99D8-F23818A720D3}"
+      DTS:ObjectName="FORECAST_DAY">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Data\unload\FORECAST_DAY" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FORECAST_DAY_COVID_19_0_0_0.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{5178B35B-EE99-4D6C-B984-44DD152F635A}"
+      DTS:ObjectName="FORECAST_DAY_COVID_19_0_0_0.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::v_file_name]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Data\unload\FORECAST_DAY_COVID_19_0_0_0.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HISTORY_DAY_0_0_0.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{29BD96C7-11D0-4ADB-A798-B22B110DAC47}"
+      DTS:ObjectName="HISTORY_DAY_0_0_0.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::v_file_name]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Data\unload\FORECAST_DAY_COVID_19_0_0_0.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[history_day_covid]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{DF75BE87-32DF-45AF-9BC0-22C641F1FAFB}"
+      DTS:ObjectName="history_day_covid">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::v_file_name]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0027_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="C:\Data\unload\FORECAST_DAY_COVID_19_0_0_0.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 0"
+              DTS:DTSID="{9401188D-9B14-4C3C-A1AD-C0A9814393DA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 1"
+              DTS:DTSID="{DDBBA983-8D34-4E2C-8DB8-3C0879530214}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="133"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 2"
+              DTS:DTSID="{93CD480F-BC1E-4960-8367-66542E5DE08B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="5"
+              DTS:DataScale="1"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 3"
+              DTS:DTSID="{2A29C610-F7D7-426E-B7D2-296486568886}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 4"
+              DTS:DTSID="{32668A99-2306-4FF7-8D3F-E3EF3593676C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="5"
+              DTS:DataScale="1"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 5"
+              DTS:DTSID="{DEA55373-769A-4FE9-B347-C09A564C2CB6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="5"
+              DTS:DataScale="1"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 6"
+              DTS:DTSID="{DFF08466-7C35-4D0E-9F0B-2B5FD1D207C4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="5"
+              DTS:DataScale="1"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 7"
+              DTS:DTSID="{257E0B25-92BB-4C37-87C3-E39788E973EE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="5"
+              DTS:DataScale="1"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 8"
+              DTS:DTSID="{60CDE139-180C-4353-84F7-D508422967B9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="5"
+              DTS:DataScale="1"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 9"
+              DTS:DTSID="{1B253E56-1118-4C4F-8AD9-AF8C01AE4916}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="5"
+              DTS:DataScale="1"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 10"
+              DTS:DTSID="{9A7A3B07-19B5-4700-961E-2CA67D5F1186}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="5"
+              DTS:DataScale="1"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 11"
+              DTS:DTSID="{D338563B-34C0-4F42-B0F5-EB75BDD56D35}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:DataType="131"
+              DTS:DataPrecision="5"
+              DTS:DataScale="1"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 12"
+              DTS:DTSID="{D1EDE5D9-E5F8-4C2D-9E7C-1937613E2E06}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HISTORY_DAY_COVID_19_0_0_0.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{9660FF00-8A9A-4DCF-9271-93BB00A24AB9}"
+      DTS:ObjectName="HISTORY_DAY_COVID_19_0_0_0.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::v_file_name]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Data\unload\FORECAST_DAY_COVID_19_0_0_0.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HOME_VALUES_0_1_0.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{0C2A15A6-9927-474A-9023-55C95BD442CC}"
+      DTS:ObjectName="HOME_VALUES_0_1_0.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::v_file_name]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Data\unload\FORECAST_DAY_COVID_19_0_0_0.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HOTELS_0_0_0.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{F561535C-1AFA-4033-9082-F36833ABCCE9}"
+      DTS:ObjectName="HOTELS_0_0_0.csv">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::v_file_name]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Data\unload\FORECAST_DAY_COVID_19_0_0_0.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[RICH-MAIN\RICH_2017.SANDBOX1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{ABC68F47-9195-49B7-AD77-DDB389DDE557}"
+      DTS:ObjectName="RICH-MAIN\RICH_2017.SANDBOX1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=RICH-MAIN\RICH_2017;Initial Catalog=SANDBOX;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[WEEKLY_CAR_RENTAL_0_0_0.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{2A381F15-69AC-4975-A063-EB7F037DA1A2}"
+      DTS:ObjectName="WEEKLY_CAR_RENTAL_0_0_0.csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Data\unload\WEEKLY_CAR_RENTAL_0_0_0.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[WEEKLY_CRUISES_0_0_0.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{F8141DC4-06D6-481D-BC7B-44A5DAE1AEB8}"
+      DTS:ObjectName="WEEKLY_CRUISES_0_0_0.csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Data\unload\WEEKLY_CRUISES_0_0_0.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{683101E8-000D-4BE5-98F5-A294A3A95940}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_file_list">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{82584AD0-1033-46BA-A0DF-7FC478487697}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_file_name">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Data\unload\FORECAST_DAY_COVID_19_0_0_0.csv</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Bulk Insert CLIMATOLOGY_DAY"
+      DTS:CreationName="Microsoft.BulkInsertTask"
+      DTS:Description="Bulk Insert Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{0687521A-B622-4B54-8A2F-8847FCB24ECC}"
+      DTS:ExecutableType="Microsoft.BulkInsertTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Bulk Insert CLIMATOLOGY_DAY"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <BulkInsertTask:BulkInsertTaskData
+          BulkInsertTask:SourceConnectionName="{79CA3B9D-E8CA-4397-BA50-9D06B6304180}"
+          BulkInsertTask:DestinationConnectionName="{ABC68F47-9195-49B7-AD77-DDB389DDE557}"
+          BulkInsertTask:DestinationTableName="[dbo].[CLIMATOLOGY_DAY]"
+          BulkInsertTask:FieldTerminator="Comma {,}"
+          BulkInsertTask:RowTerminator="{LF}" xmlns:BulkInsertTask="www.microsoft.com/sqlserver/dts/tasks/bulkinserttask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Bulk Insert FORECAST_DAY"
+      DTS:CreationName="Microsoft.BulkInsertTask"
+      DTS:Description="Bulk Insert Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{94F9B384-1871-4D43-8B02-537038C7E8C7}"
+      DTS:ExecutableType="Microsoft.BulkInsertTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Bulk Insert FORECAST_DAY"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <BulkInsertTask:BulkInsertTaskData
+          BulkInsertTask:SourceConnectionName="{94DC8298-536B-4281-99D8-F23818A720D3}"
+          BulkInsertTask:DestinationConnectionName="{ABC68F47-9195-49B7-AD77-DDB389DDE557}"
+          BulkInsertTask:DestinationTableName="[dbo].[FORECAST_DAY]"
+          BulkInsertTask:FieldTerminator="Comma {,}"
+          BulkInsertTask:RowTerminator="{LF}" xmlns:BulkInsertTask="www.microsoft.com/sqlserver/dts/tasks/bulkinserttask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Bulk Insert WEEKLY_CAR_RENTAL"
+      DTS:CreationName="Microsoft.BulkInsertTask"
+      DTS:Description="Bulk Insert Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{5ff2eafd-06f4-42f7-8ccc-95d745c798b7}"
+      DTS:ExecutableType="Microsoft.BulkInsertTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Bulk Insert WEEKLY_CAR_RENTAL"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <BulkInsertTask:BulkInsertTaskData
+          BulkInsertTask:SourceConnectionName="{2A381F15-69AC-4975-A063-EB7F037DA1A2}"
+          BulkInsertTask:DestinationConnectionName="{ABC68F47-9195-49B7-AD77-DDB389DDE557}"
+          BulkInsertTask:DestinationTableName="[dbo].[WEEKLY_CAR_RENTAL]"
+          BulkInsertTask:FieldTerminator="Comma {,}"
+          BulkInsertTask:RowTerminator="{LF}" xmlns:BulkInsertTask="www.microsoft.com/sqlserver/dts/tasks/bulkinserttask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Bulk Insert WEEKLY_CRUISES"
+      DTS:CreationName="Microsoft.BulkInsertTask"
+      DTS:Description="Bulk Insert Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{062c0aa0-6176-4c2d-8269-49290ffb0def}"
+      DTS:ExecutableType="Microsoft.BulkInsertTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Bulk Insert WEEKLY_CRUISES"
+      DTS:ThreadHint="4">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <BulkInsertTask:BulkInsertTaskData
+          BulkInsertTask:SourceConnectionName="{F8141DC4-06D6-481D-BC7B-44A5DAE1AEB8}"
+          BulkInsertTask:DestinationConnectionName="{ABC68F47-9195-49B7-AD77-DDB389DDE557}"
+          BulkInsertTask:DestinationTableName="[dbo].[WEEKLY_CRUISES]"
+          BulkInsertTask:FieldTerminator="Comma {,}"
+          BulkInsertTask:RowTerminator="{LF}" xmlns:BulkInsertTask="www.microsoft.com/sqlserver/dts/tasks/bulkinserttask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Forecast Day Covid 19"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{7496A9F8-388D-44E7-B206-ADA3D4244FB7}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Forecast Day Covid 19">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{7984594B-8C41-48F2-8B6B-0B0334835FBB}"
+        DTS:ObjectName="{7984594B-8C41-48F2-8B6B-0B0334835FBB}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Data\unload" />
+            <FEFEProperty
+              FileSpec="FORECAST_DAY_COVID*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Forecast Day Covid 19\Bulk Insert Task"
+          DTS:CreationName="Microsoft.BulkInsertTask"
+          DTS:Description="Bulk Insert Task"
+          DTS:DTSID="{ABA13AEE-84A0-4943-B0E8-D466CB603F83}"
+          DTS:ExecutableType="Microsoft.BulkInsertTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Bulk Insert Task"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <BulkInsertTask:BulkInsertTaskData
+              BulkInsertTask:SourceConnectionName="{5178B35B-EE99-4D6C-B984-44DD152F635A}"
+              BulkInsertTask:DestinationConnectionName="{ABC68F47-9195-49B7-AD77-DDB389DDE557}"
+              BulkInsertTask:DestinationTableName="[dbo].[FORECAST_DAY_COVID_19]"
+              BulkInsertTask:FieldTerminator="Comma {,}"
+              BulkInsertTask:RowTerminator="{LF}" xmlns:BulkInsertTask="www.microsoft.com/sqlserver/dts/tasks/bulkinserttask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{CF6EF9C0-315D-4384-9821-4E3668AE1E98}"
+          DTS:ObjectName="{CF6EF9C0-315D-4384-9821-4E3668AE1E98}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::v_file_name" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\History Day"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{c07e9ef2-6d4c-424d-9c41-567916777aa3}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="History Day">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{a87920d7-a6f1-4a96-b2a1-3f7f739f11b9}"
+        DTS:ObjectName="{7984594B-8C41-48F2-8B6B-0B0334835FBB}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Data\unload" />
+            <FEFEProperty
+              FileSpec="HISTORY_DAY_0*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\History Day\Bulk Insert Task"
+          DTS:CreationName="Microsoft.BulkInsertTask"
+          DTS:Description="Bulk Insert Task"
+          DTS:DTSID="{1585bc65-c1df-4843-b7f3-e6559640ea2f}"
+          DTS:ExecutableType="Microsoft.BulkInsertTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Bulk Insert Task"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <BulkInsertTask:BulkInsertTaskData
+              BulkInsertTask:SourceConnectionName="{29BD96C7-11D0-4ADB-A798-B22B110DAC47}"
+              BulkInsertTask:DestinationConnectionName="{ABC68F47-9195-49B7-AD77-DDB389DDE557}"
+              BulkInsertTask:DestinationTableName="[dbo].[HISTORY_DAY]"
+              BulkInsertTask:FieldTerminator="Comma {,}"
+              BulkInsertTask:RowTerminator="{LF}" xmlns:BulkInsertTask="www.microsoft.com/sqlserver/dts/tasks/bulkinserttask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{F3CFF183-1946-462D-931E-8FF9843AA33D}"
+          DTS:ObjectName="{F3CFF183-1946-462D-931E-8FF9843AA33D}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::v_file_name" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\History Day Covid"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{c5a17561-f5b8-48a4-ac7f-b846599bf629}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="History Day Covid">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{00b561cf-c4b8-4cc9-a7a2-67768d35e360}"
+        DTS:ObjectName="{7984594B-8C41-48F2-8B6B-0B0334835FBB}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Data\unload" />
+            <FEFEProperty
+              FileSpec="HISTORY_DAY_COVID*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\History Day Covid\Bulk Insert Task"
+          DTS:CreationName="Microsoft.BulkInsertTask"
+          DTS:Description="Bulk Insert Task"
+          DTS:DTSID="{a0d550ae-adf5-430d-8d0d-ed7fa1a8f7bb}"
+          DTS:ExecutableType="Microsoft.BulkInsertTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Bulk Insert Task"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <BulkInsertTask:BulkInsertTaskData
+              BulkInsertTask:SourceConnectionName="{9660FF00-8A9A-4DCF-9271-93BB00A24AB9}"
+              BulkInsertTask:DestinationConnectionName="{ABC68F47-9195-49B7-AD77-DDB389DDE557}"
+              BulkInsertTask:DestinationTableName="[dbo].[HISTORY_DAY_COVID_19]"
+              BulkInsertTask:FieldTerminator="Vertical Bar {|}"
+              BulkInsertTask:RowTerminator="{LF}" xmlns:BulkInsertTask="www.microsoft.com/sqlserver/dts/tasks/bulkinserttask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{56FF19E2-05C9-404C-B664-926EF3BCE4F7}"
+          DTS:ObjectName="{56FF19E2-05C9-404C-B664-926EF3BCE4F7}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::v_file_name" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Home Values"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{007118cf-b757-4e7e-82d4-5615127025cd}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Home Values">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{1444b5a0-7a39-4199-9a09-383d6215d29b}"
+        DTS:ObjectName="{7984594B-8C41-48F2-8B6B-0B0334835FBB}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Data\unload" />
+            <FEFEProperty
+              FileSpec="HOME_VALUES*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Home Values\Bulk Insert Task"
+          DTS:CreationName="Microsoft.BulkInsertTask"
+          DTS:Description="Bulk Insert Task"
+          DTS:DTSID="{72f194c2-8891-498f-aafa-7e22111d6fea}"
+          DTS:ExecutableType="Microsoft.BulkInsertTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Bulk Insert Task"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <BulkInsertTask:BulkInsertTaskData
+              BulkInsertTask:SourceConnectionName="{0C2A15A6-9927-474A-9023-55C95BD442CC}"
+              BulkInsertTask:DestinationConnectionName="{ABC68F47-9195-49B7-AD77-DDB389DDE557}"
+              BulkInsertTask:DestinationTableName="[dbo].[HOME_VALUES]"
+              BulkInsertTask:FieldTerminator="Vertical Bar {|}"
+              BulkInsertTask:RowTerminator="{LF}" xmlns:BulkInsertTask="www.microsoft.com/sqlserver/dts/tasks/bulkinserttask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{B5DF4892-78E2-4AC4-9B60-F21AB51BE76E}"
+          DTS:ObjectName="{B5DF4892-78E2-4AC4-9B60-F21AB51BE76E}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::v_file_name" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Hotels"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{1e62e2f2-3379-41ee-bb49-57ed7dda2322}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Hotels">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{4d0dc3e9-4c37-4659-8399-d33d5379f506}"
+        DTS:ObjectName="{7984594B-8C41-48F2-8B6B-0B0334835FBB}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Data\unload" />
+            <FEFEProperty
+              FileSpec="HOTELS*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Hotels\Bulk Insert Task"
+          DTS:CreationName="Microsoft.BulkInsertTask"
+          DTS:Description="Bulk Insert Task"
+          DTS:DTSID="{c918c0f6-8dca-40f0-820c-5d9e7d98b220}"
+          DTS:ExecutableType="Microsoft.BulkInsertTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Bulk Insert Task"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <BulkInsertTask:BulkInsertTaskData
+              BulkInsertTask:SourceConnectionName="{F561535C-1AFA-4033-9082-F36833ABCCE9}"
+              BulkInsertTask:DestinationConnectionName="{ABC68F47-9195-49B7-AD77-DDB389DDE557}"
+              BulkInsertTask:DestinationTableName="[dbo].[HOTELS]"
+              BulkInsertTask:FieldTerminator="Vertical Bar {|}"
+              BulkInsertTask:RowTerminator="{LF}" xmlns:BulkInsertTask="www.microsoft.com/sqlserver/dts/tasks/bulkinserttask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Hotels\File System Task"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{C5BF1021-F208-4D3E-A5D6-09EB8D9CAACD}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="File System Task"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData />
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Hotels\Wait for 5 minutes"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8BCFF705-9994-4D80-98D4-861AFC24D04D}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Wait for 5 minutes"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{ABC68F47-9195-49B7-AD77-DDB389DDE557}"
+              SQLTask:SqlStatementSource="WAITFOR DELAY '00:05:00.000'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Hotels.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{7F7B7ABB-5F16-439E-B2E0-7495A1FDA408}"
+          DTS:From="Package\Hotels\Bulk Insert Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Hotels\File System Task" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Hotels.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{CD8C7A80-0D51-4B10-855F-38FD8640CAF2}"
+          DTS:From="Package\Hotels\File System Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Hotels\Wait for 5 minutes" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{2AED221C-2D3B-47CB-B1F7-44DFAF0E89FF}"
+          DTS:ObjectName="{2AED221C-2D3B-47CB-B1F7-44DFAF0E89FF}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::v_file_name" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8F047E2C-36F7-409C-92B5-99ED7530724F}"
+      DTS:From="Package\Forecast Day Covid 19"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\History Day" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{26237FB2-873D-4E8E-A634-0CF3EC6FAF22}"
+      DTS:From="Package\History Day"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\History Day Covid" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{803868B3-A170-42C0-9F59-A46AD5D418AA}"
+      DTS:From="Package\History Day Covid"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Home Values" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{05F9FC33-07FE-42DB-8308-04BA2A8DA573}"
+      DTS:From="Package\Home Values"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Hotels" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="229,42"
+          Id="Package\Bulk Insert CLIMATOLOGY_DAY"
+          TopLeft="104,147" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\Bulk Insert FORECAST_DAY"
+          TopLeft="117,267" />
+        <NodeLayout
+          Size="241,42"
+          Id="Package\Bulk Insert WEEKLY_CAR_RENTAL"
+          TopLeft="104,407" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\Bulk Insert WEEKLY_CRUISES"
+          TopLeft="109,485" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Forecast Day Covid 19\Bulk Insert Task"
+          TopLeft="71,42" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="273,163"
+          Size="273,206"
+          Id="Package\Forecast Day Covid 19"
+          TopLeft="446,123" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\History Day\Bulk Insert Task"
+          TopLeft="71,42" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="273,163"
+          Size="273,206"
+          Id="Package\History Day"
+          TopLeft="447,424" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\History Day Covid\Bulk Insert Task"
+          TopLeft="80,85" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="273,182"
+          Size="273,225"
+          Id="Package\History Day Covid"
+          TopLeft="760,118" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Home Values\Bulk Insert Task"
+          TopLeft="71,42" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="273,163"
+          Size="273,206"
+          Id="Package\Home Values"
+          TopLeft="768,425" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Hotels\Bulk Insert Task"
+          TopLeft="71,42" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Hotels\Wait for 5 minutes"
+          TopLeft="146,194" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Hotels\File System Task"
+          TopLeft="42,132" />
+        <EdgeLayout
+          Id="Package\Hotels.PrecedenceConstraints[Constraint]"
+          TopLeft="148.5,84">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-27.5,48"
+              Start="0,0"
+              End="-27.5,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20"
+                    Point2="0,24"
+                    Point3="-4,24" />
+                  <mssgle:LineSegment
+                    End="-23.5,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-23.5,24"
+                    Point2="-27.5,24"
+                    Point3="-27.5,28" />
+                  <mssgle:LineSegment
+                    End="-27.5,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Hotels.PrecedenceConstraints[Constraint 1]"
+          TopLeft="200,153">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29,41"
+              Start="0,0"
+              End="29,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="25,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25,0"
+                    Point2="29,0"
+                    Point3="29,4" />
+                  <mssgle:LineSegment
+                    End="29,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="344,291"
+          Size="344,334"
+          Id="Package\Hotels"
+          TopLeft="1082,130" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="583,329">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,95"
+              Start="0,0"
+              End="0,87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="627.666666666667,424">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="224.666666666667,-81"
+              Start="0,0"
+              End="224.666666666667,-73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-36.5"
+                    Point2="0,-40.5"
+                    Point3="4,-40.5" />
+                  <mssgle:LineSegment
+                    End="220.666666666667,-40.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="220.666666666667,-40.5"
+                    Point2="224.666666666667,-40.5"
+                    Point3="224.666666666667,-44.5" />
+                  <mssgle:LineSegment
+                    End="224.666666666667,-73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="940.666666666667,343">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-80.3333333333333,82"
+              Start="0,0"
+              End="-80.3333333333333,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37"
+                    Point2="0,41"
+                    Point3="-4,41" />
+                  <mssgle:LineSegment
+                    End="-76.3333333333333,41" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-76.3333333333333,41"
+                    Point2="-80.3333333333333,41"
+                    Point3="-80.3333333333333,45" />
+                  <mssgle:LineSegment
+                    End="-80.3333333333333,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="1041,528">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="41,-231"
+              Start="0,0"
+              End="33.5,-231">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="16.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.5,0"
+                    Point2="20.5,0"
+                    Point3="20.5,-4" />
+                  <mssgle:LineSegment
+                    End="20.5,-227" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.5,-227"
+                    Point2="20.5,-231"
+                    Point3="24.5,-231" />
+                  <mssgle:LineSegment
+                    End="33.5,-231" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

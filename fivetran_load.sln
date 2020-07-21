@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "fivetran_load", "fivetran_load\fivetran_load.dtproj", "{6E4A534D-C4AC-4F02-BC9A-19B9A25B1529}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E4A534D-C4AC-4F02-BC9A-19B9A25B1529}.Development|Default.ActiveCfg = Development
+		{6E4A534D-C4AC-4F02-BC9A-19B9A25B1529}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9AED57B-25FE-4BA6-9981-BD24E60DFCA0}
+	EndGlobalSection
+EndGlobal
